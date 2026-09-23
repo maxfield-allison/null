@@ -1,20 +1,18 @@
 # null
 
-A quiet mode for AI assistants. While it's on, the model answers your thinking aloud with `Received.` and adds nothing you didn't ask for. No advice, no praise, no reassurance, no follow-up questions, no next steps.
+A skill that asks an AI assistant to wait while you think out loud. Its instructions are to reply `Received.` until you ask for something specific, without adding advice or filling in what you haven't decided yet.
 
 It's a skill for Claude Code and Codex, and a standalone prompt covers any other chat.
 
 ## Why
 
-What a model says can shape what you think next. Ask it for options and the options it lists tend to become the ones you weigh. Tell it which way you're leaning and it tends to agree.
+I value being able to give an AI something vague and find things I didn't know to ask about. But what I put into it affects what I get back, and I think its response can narrow what I consider next. When I'm still deciding what I think, I want more control over when it contributes.
 
-Sycophancy is the usual name for the agreeing part. This project starts from the idea that the pull runs the other way too: you drift toward whatever the model hands back, and your own context gets poisoned a little each time. When you're still working out what you think, the model fills in the gaps before you've had a chance to.
-
-null turns the model into something closer to a very advanced calculator. It stays out of the way until you ask for something.
-
-`null` is a value nobody has filled in yet.
+The idea behind null is to make the model behave more like a very advanced calculator during that part of the process. I want it to wait until I ask for something. Whether these instructions help with that still needs testing.
 
 ## What it does
+
+These are the behaviors the instructions request, rather than a guarantee of what a model will do:
 
 - `/null` in Claude Code or `$null` in Codex turns it on. It replies `null mode on.`
 - Thinking aloud, fragments and rhetorical questions get `Received.` and nothing else.
@@ -29,9 +27,9 @@ null turns the model into something closer to a very advanced calculator. It sta
 
 ## Install
 
-**Claude Code:** copy this directory to `~/.claude/skills/null/` for every project, or to `.claude/skills/null/` inside one project. It only runs when you type `/null`. The model won't invoke it on its own (`disable-model-invocation: true`).
+**Claude Code:** copy this directory to `~/.claude/skills/null/` for every project, or to `.claude/skills/null/` inside one project. Invoke it with `/null`. The configuration disables model invocation (`disable-model-invocation: true`).
 
-**Codex:** copy this directory to `~/.codex/skills/null/`. `agents/openai.yaml` sets `allow_implicit_invocation: false`, so it only runs when you type `$null`.
+**Codex:** copy this directory to `~/.codex/skills/null/`. Invoke it with `$null`. `agents/openai.yaml` sets `allow_implicit_invocation: false` to disable implicit invocation.
 
 **Anything else:** `references/subagent.md` has a standalone prompt. Paste it into a fresh chat with your text and what you want done with it.
 
